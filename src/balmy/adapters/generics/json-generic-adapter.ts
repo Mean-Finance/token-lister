@@ -24,7 +24,7 @@ export class JsonGenericTokenListGenerator implements ITokenListGenerator {
           name: token.name,
           symbol: token.symbol,
           logoURI: token.logoURI,
-          chainID: token.chainId,
+          chainId: token.chainId,
           decimals: token.decimals,
           address: token.address,
         });
@@ -42,7 +42,7 @@ export class JsonGenericTokenListGenerator implements ITokenListGenerator {
     const chains: Set<ChainId> = new Set();
     return Array.from(
       this.tokenList.reduce((chains, token) => {
-        if (token.chainID) chains.add(token.chainID);
+        if (token.chainId) chains.add(token.chainId);
         return chains;
       }, chains),
     );

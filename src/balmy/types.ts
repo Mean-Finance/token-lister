@@ -14,7 +14,7 @@ export type TokenData = {
   address: Address;
   logoURI?: string;
   decimals?: number;
-  chainID: ChainId;
+  chainId: ChainId;
 };
 
 export type FullTokenData = TokenData & {

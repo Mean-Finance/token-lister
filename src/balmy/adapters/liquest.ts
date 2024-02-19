@@ -20,7 +20,7 @@ export class LiquestTokenListGenerator implements ITokenListGenerator {
               name: data.name,
               decimals: data.decimals,
               symbol: data.symbol,
-              chainID: Number(chain),
+              chainId: Number(chain),
               address: data.address,
             });
           }

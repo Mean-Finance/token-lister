@@ -28,16 +28,16 @@ async function run(): Promise<any> {
   )) {
     const tokenList = generator.generator.getTokenList();
     tokenList.forEach((token) => {
-      if (isAddress(token.address) && !!token.chainID) {
+      if (isAddress(token.address) && !!token.chainId) {
         const address = token.address.toLowerCase();
         if (!tokensOcurrencies[address]) tokensOcurrencies[address] = {};
-        if (!tokensOcurrencies[address][token.chainID])
-          tokensOcurrencies[address][token.chainID] = {
+        if (!tokensOcurrencies[address][token.chainId])
+          tokensOcurrencies[address][token.chainId] = {
             ocurrencies: 0,
             providers: [],
           };
-        tokensOcurrencies[address][token.chainID].providers.push(name);
-        tokensOcurrencies[address][token.chainID].ocurrencies +=
+        tokensOcurrencies[address][token.chainId].providers.push(name);
+        tokensOcurrencies[address][token.chainId].ocurrencies +=
           generator.priority ?? 1;
         allTokens.push(token);
       }
@@ -48,17 +48,17 @@ async function run(): Promise<any> {
     tokensOcurrencies,
   )) {
     for (const [chain, ocurrencies] of Object.entries(ocurrenciesByChain)) {
-      const chainID = Number(chain);
+      const chainId = Number(chain);
       const numbersOfGeneratorsForSpecificChain = Object.values(
         generators,
       ).filter((generator) =>
-        generator.generator.getChains().includes(chainID),
+        generator.generator.getChains().includes(chainId),
       ).length;
       const token = unifyTokenData(
         allTokens.filter(
-          (t) => isSameAddress(t.address, address) && t.chainID == chainID,
+          (t) => isSameAddress(t.address, address) && t.chainId == chainId,
         ),
-        chainID,
+        chainId,
       );
       if (token) {
         completeList.push({ ...token, providers: ocurrencies.providers });
@@ -102,8 +102,8 @@ function saveTokenList(
         description,
         timestamp: new Date().toISOString(),
         tokens: tokens.sort((a, b) => {
-          if (a.chainID !== b.chainID) {
-            return a.chainID - b.chainID;
+          if (a.chainId !== b.chainId) {
+            return a.chainId - b.chainId;
           } else {
             return a.address
               .toLowerCase()

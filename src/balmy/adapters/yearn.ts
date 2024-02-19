@@ -18,7 +18,7 @@ export class YearnTokenListGenerator implements ITokenListGenerator {
           name: data.name,
           decimals: data.decimals,
           symbol: data.symbol,
-          chainID: Number(chain),
+          chainId: Number(chain),
           address: data.address,
         });
       }
@@ -33,7 +33,7 @@ export class YearnTokenListGenerator implements ITokenListGenerator {
     const chains: Set<ChainId> = new Set();
     return Array.from(
       this.tokenList.reduce((chains, token) => {
-        if (token.chainID) chains.add(token.chainID);
+        if (token.chainId) chains.add(token.chainId);
         return chains;
       }, chains),
     );

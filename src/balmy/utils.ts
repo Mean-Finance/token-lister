@@ -3,7 +3,7 @@ import { TokenData } from "./types";
 
 export function unifyTokenData(
   filteredTokens: any[],
-  chainID: ChainId,
+  chainId: ChainId,
 ): Required<TokenData> {
   return {
     name: filteredTokens.find((t) => t.name != undefined)?.name,
@@ -11,6 +11,6 @@ export function unifyTokenData(
     address: filteredTokens.find((t) => t.address != undefined)?.address,
     logoURI: filteredTokens.find((t) => t.logoURI != undefined)?.logoURI,
     decimals: filteredTokens.find((t) => t.decimals != undefined)?.decimals,
-    chainID: chainID,
+    chainId: chainId,
   };
 }

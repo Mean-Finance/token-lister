@@ -27,7 +27,7 @@ export class DefillamaTokenListGenerator implements ITokenListGenerator {
           name: data.name,
           symbol: data.symbol,
           logoURI: data.logoURI,
-          chainID: networkMap[network],
+          chainId: networkMap[network],
           address: address,
         });
       }
@@ -41,7 +41,7 @@ export class DefillamaTokenListGenerator implements ITokenListGenerator {
     const chains: Set<ChainId> = new Set();
     return Array.from(
       this.tokenList.reduce((chains, token) => {
-        if (token.chainID) chains.add(token.chainID);
+        if (token.chainId) chains.add(token.chainId);
         return chains;
       }, chains),
     );
